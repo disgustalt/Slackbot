@@ -9,16 +9,20 @@ export default async (app) => {
       const imgurl = view.state.values.imgin.img?.files[0]?.url_private;
 
       if (!txt || !imgurl) return await client.chat.postMessage({
-        channel_id: body.user.id,
+        channel: body.user.id,
         text: "Please provide a valid caption text and image to caption :)"
       });
 
-      const img = await fetch({
+      const res = await fetch(imgurl, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${process.env.SLACK_BOT_TOKEN}`
         }
       });
+
+      if (!res.ok) throw new Error("failed to fetch img");
+
+      const img = loadImage(img);
       const canvas = createCanvas(img.width, img.height + 100);
       const c = canvas.getContext("2d");
       
@@ -31,7 +35,7 @@ export default async (app) => {
       c.textBaseline = "middle";
 
       const maxwidth = canvas.width - 40;
-      const words = text.split(" ");
+      const words = txt.split(" ");
       let lines = [];
       let line = words[0];
 
@@ -47,7 +51,7 @@ export default async (app) => {
       }
       lines.push(line);
 
-      const height = 70;
+      const height = Math.min(40, canvas.width / 20);
       const y1 = 50 - ((lines.length - 1) * height) / 2;
 
       lines.forEach((line, i) => {
