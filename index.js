@@ -10,7 +10,7 @@ const app = new App({
 });
 
 const load = async () => {
-  const paths = ["/commands"];
+  const paths = ["/commands", "/modals"];
   for (const dir of paths) {
     const p = path.join(import.meta.dirname, dir);
     if (fs.existsSync(p)) {
@@ -18,7 +18,8 @@ const load = async () => {
       for (const f of files) {
         if (f.endsWith('.js')) {
           const file = path.join(p, f);
-          const cf = await import(`file://${file}`);
+          console.log(file);
+          const cf = await import(file);
           cf.default(app);
         }
       }
