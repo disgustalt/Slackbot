@@ -98,11 +98,12 @@ export default async (app) => {
           }
         ]
       });
-    } catch {
+    } catch (e) {
       await client.chat.postMessage({
         channel: view.private_metadata,
         text: "Uh oh, something went wrong!"
-      })
+      });
+      console.log(e);
     }
   });
 }
