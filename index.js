@@ -1,6 +1,7 @@
-require("dotenv").config();
-
-const { App } = require("@slack/bolt");
+import "dotenv/config";
+import path from "path";
+import fs from "fs"
+import { App } from "@slack/bolt";
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -8,11 +9,24 @@ const app = new App({
   socketMode: true
 });
 
-app.command("/dynamite-ping", async ({ command, ack, respond }) => {const start = Date.now();
-  await ack();
-  const latency = Date.now() - start;
-  await respond({ text: `Pong!\nLatency: ${latency}ms` });
-});
+const load = async () => {
+  const paths = ["/commands"];
+  for (const dir of paths) {
+    const p = path.join(import.meta.dirname, dir);
+    if (fs.existsSync(p)) {
+      const files = fs.readdirSync(p);
+      for (const f of files) {
+        if (f.endsWith('.js')) {
+          const file = path.join(p, f);
+          const cf = await import(`file://${file}`);
+          cf.default(app);
+        }
+      }
+    }
+  }
+};
+
+load();
 
 app.command("/dynamite-catfact", async({command, ack, respond}) => {
   await ack();
@@ -26,7 +40,5 @@ app.command("/dynamite-catfact", async({command, ack, respond}) => {
   }
 });
 
-(async () => {
-  await app.start();
-  console.log("bot is running!");
-})();
+await app.start();
+console.log("bot is running!");
