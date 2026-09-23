@@ -12,7 +12,14 @@ export default async (app) => {
         channel_id: body.user.id,
         text: "Please provide a valid caption text and image to caption :)"
       });
-      
+
+      const img = await fetch({
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.}`
+        }
+      });
+    
       await client.files.uploadV2({
         channel_id: body.user.id,
         filename: "caption.png",
