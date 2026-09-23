@@ -22,7 +22,8 @@ export default async (app) => {
 
       if (!res.ok) throw new Error("failed to fetch img");
 
-      const img = loadImage(img);
+      const resbuff = await res.arrayBuffer();
+      const img = await loadImage(resbuff);
       const canvas = createCanvas(img.width, img.height + 100);
       const c = canvas.getContext("2d");
       
