@@ -7,7 +7,8 @@ export default async (app) => {
       const fact = res.data.fact;
       await respond({ text: fact });
     } catch (e) {
-      await respond({ text: "Uh oh, something went wrong \;)" })
+      await respond({ text: "Uh oh, something went wrong \;)" });
+      console.log(e);
     }
   });
 };
