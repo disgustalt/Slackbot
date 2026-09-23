@@ -69,7 +69,7 @@ export default async (app) => {
       const upload = await fetch(up.upload_url, {
         method: "POST",
         headers: {
-          "ContentType": "image/png"
+          "Content-Type": "image/png"
         },
         body: buff
       });
@@ -79,7 +79,7 @@ export default async (app) => {
       const final = await client.files.completeUploadExternal({
         files: [
           {
-            id: up.id,
+            id: up.file_id,
             title: "caption"
           }
         ]
