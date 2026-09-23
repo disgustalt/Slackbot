@@ -16,9 +16,45 @@ export default async (app) => {
       const img = await fetch({
         method: "GET",
         headers: {
-          Authorization: `Bearer ${process.env.}`
+          Authorization: `Bearer ${process.env.SLACK_BOT_TOKEN}`
         }
       });
+      const canvas = createCanvas(img.width, img.height + 100);
+      const c = canvas.getContext("2d");
+      
+      c.fillStyle = "white";
+      c.fillRect(0, 0, canvas.width, canvas.height);
+      c.drawImage(img, 0, 100);
+      c.fillStyle = "black";
+      c.font = `bold ${Math.min(60, canvas.width /15)}px Arial`;
+      c.textAlign = "center";
+      c.textBaseline = "middle";
+
+      const maxwidth = canvas.width - 40;
+      const words = text.split(" ");
+      let lines = [];
+      let line = words[0];
+
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const width = c.measureText(line + " " + word).width;
+        if (width < maxwidth) {
+          line += " " + word;
+        } else {
+          lines.push(line);
+          line = word;
+        }
+      }
+      lines.push(line);
+
+      const height = 70;
+      const y1 = 50 - ((lines.length - 1) * height) / 2;
+
+      lines.forEach((line, i) => {
+        c.fillText(line, canvas.width / 2, y1 + (i * height));
+      });
+
+      const buff = canvas.toBuffer("image/png");
     
       await client.files.uploadV2({
         channel_id: body.user.id,
