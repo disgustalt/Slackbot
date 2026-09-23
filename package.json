@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "disgustalt",
   "dependancies": {
-    "@slack/bolt": "latest"
+    "@slack/bolt": "5.1.0",
+    "@napi-rs/canvas": "1.0.9"
   }
 }
