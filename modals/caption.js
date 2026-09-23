@@ -9,7 +9,7 @@ export default async (app) => {
       const imgurl = view.state.values.imgin.img?.files[0]?.url_private;
 
       if (!txt || !imgurl) return await client.chat.postMessage({
-        channel: body.user.id,
+        channel: view.private_metadata,
         text: "Please provide a valid caption text and image to caption :)"
       });
 
@@ -99,7 +99,7 @@ export default async (app) => {
       });
     } catch {
       await client.chat.postMessage({
-        channel: body.user.id,
+        channel: view.private_metadata,
         text: "Uh oh, something went wrong!"
       })
     }
