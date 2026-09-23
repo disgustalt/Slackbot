@@ -5,6 +5,14 @@ export default async (app) => {
     try {
       await ack();
 
+      const txt = view.state.values.captionblock.captionin?.value;
+      const imgurl = view.state.values.imgin.img?.files[0]?.url_private;
+
+      if (!txt || !imgurl) return await client.chat.postMessage({
+        channel_id: body.user.id,
+        text: "Please provide a valid caption text and image to caption :)"
+      });
+      
       await client.files.uploadV2({
         channel_id: body.user.id,
         filename: "caption.png",
