@@ -2,6 +2,7 @@
   "name": "Dynamite",
   "version": "1.0.0",
   "author": "disgustalt",
+  "type": "module",
   "dependancies": {
     "@slack/bolt": "5.1.0",
     "@napi-rs/canvas": "1.0.9"
