@@ -4,6 +4,7 @@
   "author": "disgustalt",
   "type": "module",
   "dependancies": {
+    "dotenv": "latest",
     "@slack/bolt": "5.1.0",
     "@napi-rs/canvas": "1.0.9"
   }
