@@ -1,0 +1,8 @@
+{
+  "name": "Dynamite",
+  "version": "1.0.0",
+  "author": "disgustalt",
+  "dependancies": {
+    "@slack/bolt": "latest"
+  }
+}
