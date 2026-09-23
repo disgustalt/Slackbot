@@ -50,7 +50,8 @@ export default async (app) => {
                 text: "Image to caption"
               }
             }
-          ]
+          ],
+          private_metadata: command.channel_id
         }
       });
     } catch (e) {
