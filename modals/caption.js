@@ -61,10 +61,41 @@ export default async (app) => {
 
       const buff = canvas.toBuffer("image/png");
     
-      await client.files.uploadV2({
-        channel_id: body.user.id,
+      const up = await client.files.getUploadURLExternal({
         filename: "caption.png",
-        file: buff
+        length: buff.length
+      });
+
+      const upload = await fetch(up.upload_url, {
+        method: "POST",
+        headers: {
+          "ContentType": "image/png"
+        },
+        body: buff
+      });
+
+      if (!upload.ok) throw new Error(upload);
+
+      const final = await client.files.completeUploadExternal({
+        files: [
+          {
+            id: up.id,
+            title: "caption"
+          }
+        ]
+      });
+
+      await client.chat.postMessage({
+        channel: view.private_metadata,
+        blocks: [
+          {
+            type: "image",
+            slack_file: {
+              id: final.files[0]?.id
+            },
+            alt_text: "caption image"
+          }
+        ]
       });
     } catch {
       await client.chat.postMessage({
