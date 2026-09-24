@@ -1,10 +1,10 @@
 export default async (app) => {
-  app.command("/dynamite-catfact", async({command, ack, respond}) => {
+  app.command("/dynamite-fact", async({command, ack, respond}) => {
     await ack();
     try {
-      const req = await fetch("https://cat.ninja/fact", { method: 'GET' });
+      const req = await fetch(`https://api.popcat.xyz/v2/fact`);
       const res = await req.json();
-      const fact = res.data.fact;
+      const fact = res.message.fact;
       await respond({ text: fact });
     } catch (e) {
       await respond({ text: "Uh oh, something went wrong \;)" });
