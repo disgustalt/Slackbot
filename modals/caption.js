@@ -82,8 +82,7 @@ export default async (app) => {
             id: up.file_id,
             title: "caption"
           }
-        ],
-        channels: [view.private_metadata]
+        ]
       });
 
       await client.chat.postMessage({
