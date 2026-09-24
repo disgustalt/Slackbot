@@ -58,6 +58,7 @@ export default async (app) => {
       await respond({
         text: "Uh oh, Something went wrong!"
       });
+      console.log(e);
     }
   });
 };
