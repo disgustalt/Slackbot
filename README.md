@@ -33,7 +33,7 @@ If you wanna run the bot on your own device/server, you can follow the instructi
 Choose an option based on what Operating system you're on:
 - [Windows](#windows)
 - [Linux](#linux)
--# Note: For Android users, you can install Termux [here](https://f-droid.org/en/packages/com.termux/) and follow the Linux guide!
+<sub>Note: For Android users, you can install Termux <a href="https://f-droid.org/en/packages/com.termux/">here</a> and follow the Linux guide!</sub>
 
 ### Windows
 
@@ -49,7 +49,7 @@ curl -fsSL https://fnm.vercel.app/install | bash && \
 fnm install 20 && \
 fnm use 20
 ```
--# Termux users can replace `nano` with `micro` for touch screen comparability.
+<sub>Termux users can replace `nano` with `micro` for touch screen comparability.</sub>
 
 Next, clone this repository:
 ```bash
