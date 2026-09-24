@@ -29,5 +29,7 @@ const load = async () => {
 
 load();
 
+export { app };
+
 await app.start();
 console.log("bot is running!");
