@@ -173,4 +173,4 @@ Run it on your computer using `& .\filename.ps1` om Windows, or `bash filename.s
 Now run `node repo/index.js`
 
 
-You're good to go! Just run the last two commands to uodate the bot.
+You're good to go! Just run the last two commands to update the bot.
