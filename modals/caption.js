@@ -1,4 +1,10 @@
 import { loadImage, createCanvas, GlobalFonts } from "@napi-rs/canvas";
+try {
+  GlobalFonts.registerFromPath(
+    "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf",
+    "DejaVu"
+  );
+} catch {}
 
 export default async (app) => {
   app.view("captionup", async({ ack, view, client }) => {
