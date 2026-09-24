@@ -44,7 +44,7 @@ export default async (app) => {
       c.drawImage(img, 0, 100);
 
       c.fillStyle = "black";
-      c.font = `bold ${Math.min(60, canvas.width / 15)}px "Arial"`;
+      c.font = `bold ${Math.min(60, canvas.width / 15)}px DejaVu`;
       c.textAlign = "center";
       c.textBaseline = "middle";
 
