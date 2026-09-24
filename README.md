@@ -158,7 +158,19 @@ If you are on Windows, go to [this file](/scripts/convienientlyplacedfile.ps1).
 If you are on Linux, go [here](/scripts/convienientlyplacedfile.sh).
 
 Edit the files to:
-Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
-Set `SLACK_APP_TOKEN` to your Slack bot's app token.
-Set `bot_name` to your Slack bot's name.
-Set `prefix` to `false` *if* you don't want cpmmands tp be prefixed with the bot's name.
+- Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
+- Set `SLACK_APP_TOKEN` to your Slack bot's app token.
+- Set `bot_name` to your Slack bot's name.
+- Set `prefix` to `false` *if* you don't want commands tp be prefixed with the bot's name.
+
+Save the edited file on your computer with a name of your liking.
+
+You can use `nano filename.ps1` (or .sh) to save the file in Windows PowerShell/the terminal.
+<sub>Use `winget install --id GNU.Nano -e` to install nano on Windows.</sub>
+
+Run it on your computer using `& .\filename.ps1` om Windows, or `bash filename.sh` on Linux.
+
+Now run `node repo/index.js`
+
+
+You're good to go! Just run the last two commands to uodate the bot.
