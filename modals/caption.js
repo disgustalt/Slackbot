@@ -6,6 +6,8 @@ export default async (app) => {
       await ack();
 
       const txt = view.state.values.captionblock.captionin?.value;
+      console.log(txt);
+      console.log(view.state.values)
       const imgurl = view.state.values.imgin.img?.files[0]?.url_private;
 
       if (!txt || !imgurl) {
