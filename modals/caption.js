@@ -89,7 +89,7 @@ export default async (app) => {
         ],
         channels: String(view.private_metadata)
       });
-
+      console.log(JSON.stringify(final, null, 2));
       await client.chat.postMessage({
         channel: view.private_metadata,
         blocks: [
