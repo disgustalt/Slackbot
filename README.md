@@ -33,6 +33,7 @@ If you wanna run the bot on your own device/server, you can follow the instructi
 Choose an option based on what Operating system you're on:
 - [Windows](#windows)
 - [Linux](#linux)
+
 <sub>Note: For Android users, you can install Termux <a href="https://f-droid.org/en/packages/com.termux/">here</a> and follow the Linux guide!</sub>
 
 ### Windows
@@ -49,13 +50,13 @@ curl -fsSL https://fnm.vercel.app/install | bash && \
 fnm install 20 && \
 fnm use 20
 ```
-<sub>Termux users can replace `nano` with `micro` for touch screen comparability.</sub>
+<sub>Termux users can replace `nano` with `micro` for touch screen compatability.</sub>
 
 Next, clone this repository:
 ```bash
 git clone https://github.com/disgustalt/Slackbot.git
 ```
--# You can add something like `mybot` to the end to make it clone into a special folder.
+<sub>You can add something like `mybot` to the end to make it clone into a special folder.<sub>
 
 Move into the repository folder:
 ```bash
