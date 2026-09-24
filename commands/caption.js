@@ -1,5 +1,7 @@
-export default async (app) => {
-  app.command("/dynamite-caption", async({ ack, client, command, respond }) => {
+import { Command } from '../utils/command-register.js';
+
+export default async () => {
+  Command("/dynamite-caption", async({ ack, client, command, respond }) => {
     try {
       await ack();
       await client.views.open({
