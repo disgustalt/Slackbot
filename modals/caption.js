@@ -83,7 +83,7 @@ export default async (app) => {
         body: buff
       });
 
-      if (!upload.ok) throw new Error("failed to upload image");
+      if (!upload.ok) throw new Error(upload);
 
       const final = await client.files.completeUploadExternal({
         files: [
