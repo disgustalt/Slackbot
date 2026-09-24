@@ -8,7 +8,7 @@ A simple Slack bot made in JavaScript :)
 - [Features](#features)
 - [Running it yourself](#running-the-bot-yourself)
 - [Customizing](#customizing)
-- [Keeping up-to-date](#keeping-upto-date)
+- [Keeping up-to-date](#keeping-up-to-date)
 
 > [!NOTE]
 > If you want to customize the bot, please go through [Running it yourself](#running-the-bot-yourself) and [Customizing](#customizing). [Keeping up to date](#keeping-upto-date) will force you to run exactly what's on this repository (you can only change the bot name and tokens). (That isss, unless you edit the script :p)
@@ -155,7 +155,7 @@ ill update this laterrrr
 If you intend to just run the bot as is without any customization, you can follow these steps.
 
 If you are on Windows, go to [this file](/scripts/convienientlyplacedfile.ps1).
-If you are on Linux, go [here](/scripts/convienientlyplacedfile.sh)
+If you are on Linux, go [here](/scripts/convienientlyplacedfile.sh).
 
 Edit the files to:
 Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
