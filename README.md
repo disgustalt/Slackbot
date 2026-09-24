@@ -37,13 +37,28 @@ Choose an option based on what Operating system you're on:
 <sub>Note: For Android users, you can install Termux <a href="https://f-droid.org/en/packages/com.termux/">here</a> and follow the Linux guide!</sub>
 
 ### Windows
+Run these commands in Windows PowerShell :))
+
+First, we can install the system packages:
+```powershell
+winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements; `
+winget install --id GNU.Nano -e; `
+winget install --id cURL.cURL -e; `
+irm https://fnm.vercel.app/install | iex; `
+fnm env --use-on-cd | Out-String | Invoke-Expression; `
+if (!(Test-Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }; `
+Add-Content \$PROFILE 'fnm env --use-on-cd | Out-String | Invoke-Expression'; `
+fnm install 20; `
+fnm use 20
+```
+
 
 ### Linux
 
 > [!NOTE]
 > If you are not on a distribution such as Ubuntu or Debian, you can replace `apt install` with your OS's package manager's installation command (eg: `pkg install`, `apk add`, `pacman -S`, etc).
 
-First, we can install the packages we'll need:
+First, we can install the system packages:
 ```bash
 apt install -y git nano curl && \
 curl -fsSL https://fnm.vercel.app/install | bash && \
@@ -69,3 +84,19 @@ nano config.js # or 'micro config.js'
 ```
 Change the value of `bot_name` to whatever you want.
 If you don't want a prefix on your command, you can set `prefix` to `false`.
+
+Set up environment variables:
+```bash
+nano .env # or 'micro .env'
+```
+Set the file contents to:
+```
+SLACK_BOT_TOKEN=your_slack_bot(oauth)_token
+SLACK_APP_TOKEN=your_slack_app_token
+```
+
+Finally, install packages and run the bot:
+```bash
+npm install && \
+node index.js
+```
