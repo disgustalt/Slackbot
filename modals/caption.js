@@ -75,14 +75,19 @@ export default async (app) => {
       });
 
       if (!upload.ok) throw new Error(upload);
+      const info = await client.conversations.info({
+        channel: view.private_metadata
+      });
 
+      console.log(JSON.stringify(info, null, 2));
       const final = await client.files.completeUploadExternal({
         files: [
           {
             id: up.file_id,
             title: "caption"
           }
-        ]
+        ],
+        channels: String(view.private_metadata)
       });
 
       await client.chat.postMessage({
