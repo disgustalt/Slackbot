@@ -32,8 +32,8 @@ export default async (app) => {
       const img = await loadImage(resbuff);
 
       GlobalFonts.loadSystemFonts();
-
-      console.log(GlobalFonts.families);
+      let font = 'Arial';
+      if (GlobalFonts.families?.find(f => f.family === "DejaVu")) font = 'DejaVu';
 
       const canvas = createCanvas(img.width, img.height + 100);
       const c = canvas.getContext("2d");
@@ -44,7 +44,7 @@ export default async (app) => {
       c.drawImage(img, 0, 100);
 
       c.fillStyle = "black";
-      c.font = `bold ${Math.min(60, canvas.width / 15)}px DejaVu`;
+      c.font = `bold ${Math.min(60, canvas.width / 15)}px ${font}`;
       c.textAlign = "center";
       c.textBaseline = "middle";
 
