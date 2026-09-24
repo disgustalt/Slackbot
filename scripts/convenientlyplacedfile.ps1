@@ -17,7 +17,7 @@ SLACK_APP_TOKEN=your_app_token
 
 @'
 export default {
-  bot_name: "your_bot_name"
+  bot_name: "your_bot_name",
   prefix: true
 }
 '@ | Out-File repo\config.js -Encoding  utf8 -Force
