@@ -1,5 +1,7 @@
-export default async (app) => {
-  app.command("/dynamite-fact", async({command, ack, respond}) => {
+import { Command } from '../utils/command-register.js';
+
+export default async () => {
+  Command("/dynamite-fact", async({command, ack, respond}) => {
     await ack();
     try {
       const req = await fetch(`https://api.popcat.xyz/v2/fact`);
