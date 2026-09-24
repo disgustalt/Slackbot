@@ -90,18 +90,6 @@ export default async (app) => {
         channels: String(view.private_metadata)
       });
       console.log(JSON.stringify(final, null, 2));
-      await client.chat.postMessage({
-        channel: view.private_metadata,
-        blocks: [
-          {
-            type: "image",
-            slack_file: {
-              id: final.files[0]?.id
-            },
-            alt_text: "caption image"
-          }
-        ]
-      });
     } catch (e) {
       await client.chat.postMessage({
         channel: view.private_metadata,
