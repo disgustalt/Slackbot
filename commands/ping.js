@@ -1,5 +1,7 @@
-export default async (app) => {
-  app.command("/dynamite-ping", async({ ack, respond }) => {
+import { Command } from '../utils/command-register.js';
+
+export default async () => {
+  Command("/dynamite-ping", async({ ack, respond }) => {
     const start = Date.now();
     try {
       await respond({
