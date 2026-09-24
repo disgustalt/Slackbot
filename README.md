@@ -7,13 +7,19 @@ A simple Slack bot made in JavaScript :)
 - [My yap](#yap)
 - [Features](#features)
 - [Running it yourself](#running-the-bot-yourself)
+- [Customizing](#customizing)
+- [Keeping up to date](#keeping-upto-date)
 
+> [!NOTE]
+> If you want to customize the bot, please go through [Running it yourself](#running-the-bot-yourself) and [Customizing](#customizing). [Keeping up to date](#keeping-upto-date) will force you to run exactly what's on this repository (you can only change the bot name and tokens). (That isss, unless you edit the script :p)
 ---
 
 ## Yap
 Dynamite is a simple Slack bot made using the `@slack/bolt` npm package.
 
-All commands are imported from [/modals](/modals) (obviously)
+The bot uses a 'custom' (not exactly) command registration system.
+
+All commands are imported from [/commands](/commands) (obviously)
 And modal listeners are in [/modals](/modals)
 
 what else do I write heree
@@ -52,6 +58,42 @@ fnm install 20; `
 fnm use 20
 ```
 
+Next, clone this repository:
+```powershell
+git clone https://github.com/disgustalt/Slackbot.git
+```
+<sub>You can add something like `mybot` to the end to make it clone into a special folder.<sub>
+
+Move into the repository folder:
+```powershell
+cd Slackbot # Or something like 'cd mybot' if you specified a folder
+```
+
+Edit the config:
+```powershell
+nano config.js
+```
+Change the value of `bot_name` to whatever you want.
+If you don't want a prefix on your command, you can set `prefix` to `false`.
+
+Set up environment variables:
+```powershell
+nano .env
+```
+Set the file contents to:
+```
+SLACK_BOT_TOKEN=your_slack_bot(oauth)_token
+SLACK_APP_TOKEN=your_slack_app_token
+```
+
+Finally, install packages and run the bot:
+```powershell
+npm install; `
+node index.js
+```
+You can re-run this whenever :)
+
+Go check out [Customizing](#customizing) to customize the bot ;)
 
 ### Linux
 
@@ -75,7 +117,7 @@ git clone https://github.com/disgustalt/Slackbot.git
 
 Move into the repository folder:
 ```bash
-cd Slackbot # Or 'cd mybot' if you specified a folder
+cd Slackbot # Or something like 'cd mybot' if you specified a folder
 ```
 
 Edit the config:
@@ -100,3 +142,6 @@ Finally, install packages and run the bot:
 npm install && \
 node index.js
 ```
+You can re-run this whenever :)
+
+Go check out [Customizing](#customizing) to customize the bot ;)
