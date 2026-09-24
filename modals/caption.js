@@ -1,4 +1,4 @@
-import { loadImage, createCanvas } from "@napi-rs/canvas";
+import { loadImage, createCanvas, GlobalFonts } from "@napi-rs/canvas";
 
 export default async (app) => {
   app.view("captionup", async({ ack, view, client }) => {
@@ -25,6 +25,10 @@ export default async (app) => {
       const resbuff = await res.arrayBuffer();
       const img = await loadImage(resbuff);
 
+      GlobalFonts.loadSystemFonts();
+
+      console.log(GlobalFonts.families);
+
       const canvas = createCanvas(img.width, img.height + 100);
       const c = canvas.getContext("2d");
 
@@ -34,37 +38,37 @@ export default async (app) => {
       c.drawImage(img, 0, 100);
 
       c.fillStyle = "black";
-      c.font = `bold ${Math.min(60, canvas.width / 15)}px Arial`;
+      c.font = `bold ${Math.min(60, canvas.width / 15)}px "Arial"`;
       c.textAlign = "center";
       c.textBaseline = "middle";
 
       const maxwidth = canvas.width - 40;
       const words = txt.trim().split(/\s+/);
       let lines = [];
-      let line = "";
+      let line = words[0];
 
-      for (const word of words) {
-        const test = line ? `${line} ${word}` : word;
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const width = c.measureText(line + " " + word).width;
 
-        if (c.measureText(test).width <= maxwidth) {
-          line = test;
+        if (width < maxwidth) {
+          line += " " + word;
         } else {
-          if (line) lines.push(line);
+          lines.push(line);
           line = word;
         }
       }
 
-      if (line) lines.push(line);
+      lines.push(line);
 
       const height = Math.min(60, canvas.width / 15);
-      const totalheight = lines.length * height;
-      const y1 = (100 - totalheight) / 2 + height / 2;
+      const y1 = 50 - ((lines.length - 1) * height) / 2;
 
       lines.forEach((line, i) => {
         c.fillText(
           line,
           canvas.width / 2,
-          y1 + (i * height)
+          y1 + i * height
         );
       });
 
