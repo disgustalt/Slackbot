@@ -13,4 +13,11 @@ SLACK_BOT_TOKEN=your_slack_bot(oauth)_token
 SLACK_APP_TOKEN=your_slack_app_token
 EOF
 
+cat << 'EOF' > repo/config.js
+export default {
+  bot_name: "your_bot_name",
+  prefix: true
+}
+EOF
+
 npm install
