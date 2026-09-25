@@ -177,6 +177,9 @@ export default async () => {
     });
   });
 }
+```
+
+That's alll (I think)
 
 ## Keeping up-to-date
 If you intend to just run the bot as is without any customization, you can follow these steps.
