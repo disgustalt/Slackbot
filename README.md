@@ -157,6 +157,7 @@ If you intend to just run the bot as is without any customization, you can follo
 Select the OS you're running the bot on:
 - [Windows](#windows-1)
 - [Linux](#linux-1)
+
 <sub>Note: Android users can download <a href="https://f-droid.org/en/packages/com.termux/">Termux</a> and follow the Linux guide.</sub>
 
 ### Windows
