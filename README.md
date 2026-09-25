@@ -148,8 +148,35 @@ Go check out [Customizing](#customizing) to customize the bot ;)
 
 
 ## Customizing
-ill update this laterrrr
+You can add command files to the [/commands](/commands) directory. (All files must end with `.js`)
 
+Modal listeners go to [/modals](/modals).
+
+If you want to add another type of listener/file, you can create a new dieectory amd add it to the `paths` variable in [index.js](/index.js) (Line 13).
+
+All files you add to the directories in the `paths` variables must have:
+```javascript
+export default async () => {
+
+}
+```
+
+Command registration uses a custom `Commands` function. You can check out [this file](/utils/command-register.js).
+
+The `Commands` function accepts two params; The command name and the handling function. Not that different from Bolt's `app.command`. **Do not** include `/` in the command name.
+
+Template for files in [/commands](/commands):
+```javascript
+import { Command } from '../utils/command-register.js';
+
+export default async () => {
+  Command('name', async({ ack, respond }) => {
+    await ack();
+    await respond({
+      text: "hi"
+    });
+  });
+}
 
 ## Keeping up-to-date
 If you intend to just run the bot as is without any customization, you can follow these steps.
