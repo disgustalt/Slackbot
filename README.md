@@ -191,7 +191,7 @@ Select the OS you're running the bot on:
 <sub>Note: Android users can download <a href="https://f-droid.org/en/packages/com.termux/">Termux</a> and follow the Linux guide.</sub>
 
 ### Windows
-Go to [this file](/scripts/convienientlyplacedfile.ps1).
+Go to [this file](/scripts/convenientlyplacedfile.ps1).
 Edit the file to:
 - Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
 - Set `SLACK_APP_TOKEN` to your Slack bot's app token.
@@ -238,7 +238,7 @@ You're good to go! Just run this command to update the bot anytime:
 ```
 
 ### Linux
-Go to [this file](/scripts/convienientlyplacedfile.sh).
+Go to [this file](/scripts/convenientlyplacedfile.sh).
 Edit the file to:
 - Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
 - Set `SLACK_APP_TOKEN` to your Slack bot's app token.
