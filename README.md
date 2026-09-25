@@ -197,7 +197,7 @@ Clone the repository using:
 
 To start the bot, run:
 ```powershell
-node repo/index.js
+node repo\index.js
 ```
 
 
@@ -225,3 +225,26 @@ fnm install 20 && \
 fnm use 20
 ```
 <sub>Termux users can replace `nano` with `micro` for touch screen compatability.</sub>
+
+Create a new file for the script:
+```bash
+nano filename.sh # or 'micro filename.sh'
+```
+<sub>Note: 'filename' can be anything you want. Replace 'filename' in all the commands below with what you use here :)</sub>
+
+Paste the edited content and press `Ctrl + O` (or `Ctrl + S` with micro) to save. You can press `Ctrl + X` (or `Ctrl + Q` with micro) to exit after that.
+
+Copy the repository:
+```bash
+bash filename.sh
+```
+
+Start  bot using:
+```bash
+node repo/index.js
+```
+
+That's all! Just run this whenever there's an update:
+```bash
+bash filename.sh
+```
