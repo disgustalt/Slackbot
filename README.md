@@ -148,6 +148,8 @@ Go check out [Customizing](#customizing) to customize the bot ;)
 
 
 ## Customizing
+Change the bot name and choose wether to prefix commands in [config.js](/config.js).
+
 You can add command files to the [/commands](/commands) directory. (All files must end with `.js`)
 
 Modal listeners go to [/modals](/modals).
