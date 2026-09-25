@@ -154,23 +154,74 @@ ill update this laterrrr
 ## Keeping up-to-date
 If you intend to just run the bot as is without any customization, you can follow these steps.
 
-If you are on Windows, go to [this file](/scripts/convienientlyplacedfile.ps1).
-If you are on Linux, go [here](/scripts/convienientlyplacedfile.sh).
+Select the OS you're running the bot on:
+- [Windows](#windows-1)
+- [Linux](#linux-1)
+<sub>Note: Android users can download <a href="https://f-droid.org/en/packages/com.termux/">Termux</a> and follow the Linux guide.</sub>
 
-Edit the files to:
+### Windows
+Go to [this file](/scripts/convienientlyplacedfile.ps1).
+Edit the file to:
 - Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
 - Set `SLACK_APP_TOKEN` to your Slack bot's app token.
 - Set `bot_name` to your Slack bot's name.
-- Set `prefix` to `false` *if* you don't want commands tp be prefixed with the bot's name.
+- Set `prefix` to `false` *if* you don't want commands to be prefixed with the bot's name.
 
-Save the edited file on your computer with a name of your liking.
+Open PowerShell
 
-You can use `nano filename.ps1` (or .sh) to save the file in Windows PowerShell/the terminal.
-<sub>Use `winget install --id GNU.Nano -e` to install nano on Windows.</sub>
+Install the system packages:
+```powershell
+winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements; `
+winget install --id GNU.Nano -e; `
+winget install --id cURL.cURL -e; `
+irm https://fnm.vercel.app/install | iex; `
+fnm env --use-on-cd | Out-String | Invoke-Expression; `
+if (!(Test-Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }; `
+Add-Content \$PROFILE 'fnm env --use-on-cd | Out-String | Invoke-Expression'; `
+fnm install 20; `
+fnm use 20
+```
 
-Run it on your computer using `& .\filename.ps1` om Windows, or `bash filename.sh` on Linux.
+Create a file using:
+```powershell
+nano filename.ps1
+```
+<sub>Note: 'filename' can be anything you want. Replace 'filename' in all the commands below with what you use here :)</sub>
 
-Now run `node repo/index.js`
+Paste the edited content and press `Ctrl + O` to save. You can press `Ctrl + X` to exit after that.
+
+Clone the repository using:
+```powershell
+& .\filename.ps1
+```
+
+To start the bot, run:
+```powershell
+node repo/index.js
+```
 
 
-You're good to go! Just run the last two commands to update the bot.
+You're good to go! Just run this command to update the bot anytime:
+```powershell
+& .\filename.ps1
+```
+
+### Linux
+Go to [this file](/scripts/convienientlyplacedfile.sh).
+Edit the file to:
+- Set `SLACK_BOT_TOKEN` to your Slack bot's OAuth token.
+- Set `SLACK_APP_TOKEN` to your Slack bot's app token.
+- Set `bot_name` to your Slack bot's name.
+- Set `prefix` to `false` *if* you don't want commands to be prefixed with the bot's name.
+
+> [!NOTE]
+> If you are not on a distribution such as Ubuntu or Debian, you can replace `apt install` with your OS's package manager's installation command (eg: `pkg install`, `apk add`, `pacman -S`, etc).
+
+First, we can install the system packages:
+```bash
+apt install -y git nano curl && \
+curl -fsSL https://fnm.vercel.app/install | bash && \
+fnm install 20 && \
+fnm use 20
+```
+<sub>Termux users can replace `nano` with `micro` for touch screen compatability.</sub>
